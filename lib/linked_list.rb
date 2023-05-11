@@ -9,4 +9,13 @@ class LinkedList
     @head = node
     node.data
   end
+
+  def count
+    node_counter = 0
+    if head.data != nil && head.next_node == nil
+      node_counter += 1
+    end
+    node_counter
+  end
+
 end
