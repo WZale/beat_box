@@ -27,7 +27,7 @@ RSpec.describe LinkedList do
     expect(list.count).to eq(2)
   end
   
-  xit "has a to_string method" do
+  it "has a to_string method" do
     list = LinkedList.new
     list.append("doop")
     list.append("deep")
