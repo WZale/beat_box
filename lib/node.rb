@@ -23,5 +23,3 @@ class Node
     @next_node = node
   end
 end
-
-# put def node_linker into linked_list.rb
