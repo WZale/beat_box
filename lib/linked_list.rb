@@ -41,7 +41,6 @@ class LinkedList
       end
       node_data.strip 
     end
-
   end
 
 # The to_string method provides the data from each node, joined
@@ -59,4 +58,17 @@ class LinkedList
 # list. Once the end of the list (nil) is reached, the while loop ends, and
 # node_data is returned (with leading and trailing whitespaces removed).
 
+  def prepend(data)
+    node = Node.new(data)
+    current_node = @head
+    if  @head.nil?
+      @head = node
+    else 
+      node.set_next_node(current_node)
+      @head = node
+    end
+    node.data
+  end
+
 end
+
