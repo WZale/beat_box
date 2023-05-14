@@ -90,5 +90,22 @@ class LinkedList
     full_string.include?(data)
   end
 
+  def pop
+    current_node = @head
+    data_return = (node_data_array = to_string.split).pop
+    if @head.nil?
+      nil
+    elsif current_node.next_node == nil
+      @head = nil
+    else
+      current_node = @head
+      (count - 2).times do
+        current_node = current_node.next_node
+      end
+      current_node.set_next_node(nil)
+    end
+    data_return
+  end
+
 end
 
