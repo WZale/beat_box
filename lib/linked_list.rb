@@ -63,6 +63,8 @@ class LinkedList
     node.data
   end
 
+  # insert should be made more robust, with conditionals for inserting at head and other such cases
+
   def insert(index, data)
     current_node = @head
     (index -1).times do
@@ -81,6 +83,11 @@ class LinkedList
     full_string = to_string
     string_return = full_string.split[index, number_of_elements]
     string_return.join(" ")
+  end
+
+  def includes?(data)
+    full_string = to_string
+    full_string.include?(data)
   end
 
 end
