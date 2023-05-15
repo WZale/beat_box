@@ -8,16 +8,26 @@ RSpec.describe LinkedList do
     expect(list.head).to eq(nil)
   end
   
-  it "can append more than one node" do
+  it "can append nodes" do
     list = LinkedList.new
     
     expect(list.append("doop")).to eq("doop")
-    expect(list).to be_an_instance_of(LinkedList)
     expect(list.head).to be_an_instance_of(Node)
     expect(list.head.next_node).to eq(nil)
-
+    
     expect(list.append("deep")).to eq("deep")
     expect(list.head.next_node).to be_an_instance_of(Node)
+
+    expect(list.append("plop")).to eq("plop")
+    expect(list.append("suu")).to eq("suu")
+
+    expect(list.to_string).to eq("doop deep plop suu")
+  end
+  
+  it "has a prepend method" do
+    list = LinkedList.new
+    expect(list.prepend("dop")).to eq("dop")
+
   end
   
   it "has a count method" do
@@ -42,19 +52,6 @@ RSpec.describe LinkedList do
     expect(list.to_string).to eq("doop deep")
   end
   
-  it "has an append method" do
-    list = LinkedList.new
-    
-    expect(list.append("plop")).to eq("plop")
-    expect(list.to_string).to eq("plop")
-    
-    expect(list.append("suu")).to eq("suu")
-    
-    expect(list.prepend("dop")).to eq("dop")
-    expect(list.to_string).to eq("dop plop suu")
-    expect(list.count).to eq(3)
-  end
-  
   it "has an insert method" do
     list = LinkedList.new
     
@@ -65,9 +62,16 @@ RSpec.describe LinkedList do
     
     expect(list.to_string).to eq("dop plop suu")
     expect(list.count).to eq(3)
-    
-    expect(list.insert(1, "woo")).to eq("woo")
-    expect(list.to_string).to eq("dop woo plop suu")
+
+    expect(list.insert(0, "woo")).to eq("woo")
+    expect(list.to_string).to eq("woo dop plop suu")
+
+    expect(list.insert(1, "hoo")).to eq("hoo")
+    expect(list.to_string).to eq("woo hoo dop plop suu")
+
+    headless_list = LinkedList.new
+    expect(headless_list.insert(0, "woah")).to eq("woah")
+    expect(headless_list.to_string).to eq("woah")
   end
   
   it "has a find method" do
