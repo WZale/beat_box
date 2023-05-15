@@ -75,12 +75,18 @@ class LinkedList
 
   def insert(index, data)
     current_node = @head
-    (index -1).times do
-      current_node = current_node.next_node
-    end
     inserted_node = Node.new(data)
-    inserted_node.set_next_node(current_node.next_node) && current_node.set_next_node(inserted_node)
-    inserted_node.data
+    if index == 0
+      inserted_node.set_next_node(current_node)
+      @head = inserted_node
+      inserted_node.data
+    else
+      (index -1).times do
+        current_node = current_node.next_node
+      end
+      inserted_node.set_next_node(current_node.next_node) && current_node.set_next_node(inserted_node)
+      inserted_node.data
+    end
   end
 
   # Insert will insert one or more elements at a given position in the list. It takes two parameters. The first one is the position at which to insert nodes, and the second parameter is the string of data to be inserted. 
