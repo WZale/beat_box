@@ -13,4 +13,8 @@ class BeatBox
   def count
     list.count
   end
+
+  def play
+    `say -r 150 -v Good News "deep doo ditt woo hoo shu"`
+  end
 end
