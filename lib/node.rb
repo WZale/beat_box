@@ -18,7 +18,6 @@ class Node
     current_node.set_next_node(new_node)
   end
 
-  # this is a setter method, while attr_reader is a getter
   def set_next_node(node)
     @next_node = node
   end
