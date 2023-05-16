@@ -1,13 +1,20 @@
 class BeatBox
   attr_reader :list
 
-  def initialize(list = LinkedList.new)
-    @list = list
+  def initialize(data = nil)
+    @list = LinkedList.new
+    append(data)
   end
 
-  def append(data)
-    data_array = data.split.each { |node| list.append(node) }
-    data_array.join(" ")
+  def append(node_data)
+    if node_data.nil?
+      list.head
+    else
+      node_data_array = node_data.split.each do |node|
+        list.append(node) 
+        end
+      node_data_array.join(" ")
+    end
   end
   
   def count
